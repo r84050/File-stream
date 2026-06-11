@@ -146,9 +146,10 @@
   const tg = window.Telegram?.WebApp;
   if (tg) { tg.expand(); tg.ready(); }
 
+  const STREAM_SERVER_URL = "https://a35343-feab.m.jrnm.app";
   const params = new URLSearchParams(window.location.search);
   const msgId  = params.get("msg");
-  const SRV    = (params.get("srv") || "").replace(/\/$/, "");
+  const SRV    = (params.get("srv") || STREAM_SERVER_URL).replace(/\/$/, "");
 
   function fmtSize(b) {
     const u = ["B","KB","MB","GB","TB"];
