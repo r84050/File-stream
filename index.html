@@ -146,7 +146,7 @@
   const tg = window.Telegram?.WebApp;
   if (tg) { tg.expand(); tg.ready(); }
 
-  const STREAM_SERVER_URL = "https://terabox-6ac.c.jrnm.app";
+  const STREAM_SERVER_URL = "https://tgfilestor-f8d.n.jrnm.app/";
   const params = new URLSearchParams(window.location.search);
   const msgId  = params.get("msg");
   const SRV    = (params.get("srv") || STREAM_SERVER_URL).replace(/\/$/, "");
