@@ -194,10 +194,13 @@
   </div>
 
 <script>
+  /* ── Default Stream Server URL ── */
+  const STREAM_SERVER_URL = "https://telegramfi-688.n.jrnm.app/";
+
   /* ── Parse URL params (bot embeds both msg id and stream server URL) ── */
   const params       = new URLSearchParams(window.location.search);
   const msgId        = params.get("msg");
-  const STREAM_SERVER = params.get("stream");
+  const STREAM_SERVER = params.get("stream") || STREAM_SERVER_URL;
 
   /* ── Telegram WebApp init ── */
   const tg = window.Telegram?.WebApp;
@@ -234,13 +237,9 @@
   }
 
   /* ── Decide what to show ── */
-  if (!msgId && !STREAM_SERVER) {
+  if (!msgId) {
     // Opened from the generic persistent menu button, not a video link.
     showError("No Video Selected", "Open a shared video link from the bot to start watching.");
-  } else if (!STREAM_SERVER) {
-    showError("Configuration Error", "This link is missing stream server info. Please request a new link.");
-  } else if (!msgId) {
-    showError("Invalid Link", "No video ID found in the URL.");
   } else {
     loadVideo(msgId);
   }
